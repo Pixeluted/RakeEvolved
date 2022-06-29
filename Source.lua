@@ -23,7 +23,7 @@ local bypassOnceEnabled = false
 local StunStickModified = false
 local UVModified = false
 
-local TopBar, TabContent, Tabs, Template, Notifications, Main = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/hi/main/Ilikedogs.lua'))()
+local TopBar, TabContent, Tabs, Template, Notifications, Main = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/RakeEvolved/Dev/MainUI.lua?token=GHSAT0AAAAAABUZCLUX5IOQKMIK2OMEB65QYV4VRNQ'))()
 
 local DragMousePosition
 local FramePosition
@@ -258,7 +258,7 @@ local currentIndex = 1
 --// Supply Drop Functions
 
 function viewSupplyDropItems(Box)
-	local MainViewer = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/hi/main/viewer.lua'))()
+	local MainViewer = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/RakeEvolved/Dev/SupplyDropGUI.lua?token=GHSAT0AAAAAABUZCLUWN3YIWEJKCJAMPK2OYV4VR2A'))()
 
 	local ItemsFolder = Box.Items_Folder
 
@@ -287,7 +287,7 @@ function bypassSupplyDropLock(Box)
 	local connection
 	connection = Box.GUIPart.ProximityPrompt.Triggered:Connect(function(plr)
 		if plr == Player and not Box.DB_Folder:FindFirstChild(Player.Name) then
-			local MainViewer = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/hi/main/viewer.lua'))()
+			local MainViewer = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/RakeEvolved/Dev/SupplyDropGUI.lua?token=GHSAT0AAAAAABUZCLUWN3YIWEJKCJAMPK2OYV4VR2A'))()
 
 			local ItemsFolder = Box.Items_Folder
 
