@@ -23,7 +23,7 @@ local bypassOnceEnabled = false
 local StunStickModified = false
 local UVModified = false
 
-local TopBar, TabContent, Tabs, Template, Notifications, Main = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/RakeEvolved/Dev/MainUI.lua?token=GHSAT0AAAAAABUZCLUX5IOQKMIK2OMEB65QYV4VRNQ'))()
+local TopBar, TabContent, Tabs, Template, Notifications, Main = loadstring(readfile("RakeEvolvedDev/MainUI.lua"))()
 
 local DragMousePosition
 local FramePosition
@@ -258,7 +258,7 @@ local currentIndex = 1
 --// Supply Drop Functions
 
 function viewSupplyDropItems(Box)
-	local MainViewer = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/RakeEvolved/Dev/SupplyDropGUI.lua?token=GHSAT0AAAAAABUZCLUWN3YIWEJKCJAMPK2OYV4VR2A'))()
+	local MainViewer = loadstring(readfile("RakeEvolvedDev/SupplyDropGUI.lua"))()
 
 	local ItemsFolder = Box.Items_Folder
 
@@ -287,7 +287,7 @@ function bypassSupplyDropLock(Box)
 	local connection
 	connection = Box.GUIPart.ProximityPrompt.Triggered:Connect(function(plr)
 		if plr == Player and not Box.DB_Folder:FindFirstChild(Player.Name) then
-			local MainViewer = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/RakeEvolved/Dev/SupplyDropGUI.lua?token=GHSAT0AAAAAABUZCLUWN3YIWEJKCJAMPK2OYV4VR2A'))()
+			local MainViewer = loadstring(readfile("RakeEvolvedDev/SupplyDropGUI.lua"))()
 
 			local ItemsFolder = Box.Items_Folder
 
@@ -329,7 +329,7 @@ callbacks["View Supply Drop Items"] = function()
 		if #SupplyCratesFolder:GetChildren() >= 2 then 
 			for _,box in pairs(SupplyCratesFolder:GetChildren()) do 
 				if box:FindFirstChild("UnlockValue") then 
-					if box.UnlockValue.Value >= 100 then 
+					if box.UnlockValue.Value <= 0 or not box.DB_Folder:FindFirstChild(Player.Name) then 
 						selected = box 
 						break
 					end
