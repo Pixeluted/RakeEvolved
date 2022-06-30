@@ -90,8 +90,6 @@ local ScreenGui = {
 	UICorner_34 = Instance.new("UICorner"),
 	TheToggle_10 = Instance.new("Frame"),
 	UICorner_35 = Instance.new("UICorner"),
-	ClientTab = Instance.new("ScrollingFrame"),
-	UIListLayout_4 = Instance.new("UIListLayout"),
 	Toggle_11 = Instance.new("Frame"),
 	UICorner_36 = Instance.new("UICorner"),
 	TextLabel_13 = Instance.new("TextLabel"),
@@ -99,6 +97,8 @@ local ScreenGui = {
 	UICorner_37 = Instance.new("UICorner"),
 	TheToggle_11 = Instance.new("Frame"),
 	UICorner_38 = Instance.new("UICorner"),
+	ClientTab = Instance.new("ScrollingFrame"),
+	UIListLayout_4 = Instance.new("UIListLayout"),
 	Toggle_12 = Instance.new("Frame"),
 	UICorner_39 = Instance.new("UICorner"),
 	TextLabel_14 = Instance.new("TextLabel"),
@@ -120,20 +120,18 @@ local ScreenGui = {
 	UICorner_46 = Instance.new("UICorner"),
 	TheToggle_14 = Instance.new("Frame"),
 	UICorner_47 = Instance.new("UICorner"),
-	Keybind = Instance.new("Frame"),
+	Toggle_15 = Instance.new("Frame"),
 	UICorner_48 = Instance.new("UICorner"),
 	TextLabel_17 = Instance.new("TextLabel"),
-	KeybindText = Instance.new("TextButton"),
-	UICorner_49 = Instance.new("UICorner"),
-	Toggle_15 = Instance.new("Frame"),
-	UICorner_50 = Instance.new("UICorner"),
-	TextLabel_18 = Instance.new("TextLabel"),
 	ToggleBackground_15 = Instance.new("TextButton"),
-	UICorner_51 = Instance.new("UICorner"),
+	UICorner_49 = Instance.new("UICorner"),
 	TheToggle_15 = Instance.new("Frame"),
+	UICorner_50 = Instance.new("UICorner"),
+	Keybind = Instance.new("Frame"),
+	UICorner_51 = Instance.new("UICorner"),
+	TextLabel_18 = Instance.new("TextLabel"),
+	KeybindText = Instance.new("TextButton"),
 	UICorner_52 = Instance.new("UICorner"),
-	SupplyDropsTab = Instance.new("ScrollingFrame"),
-	UIListLayout_5 = Instance.new("UIListLayout"),
 	Toggle_16 = Instance.new("Frame"),
 	UICorner_53 = Instance.new("UICorner"),
 	TextLabel_19 = Instance.new("TextLabel"),
@@ -141,18 +139,20 @@ local ScreenGui = {
 	UICorner_54 = Instance.new("UICorner"),
 	TheToggle_16 = Instance.new("Frame"),
 	UICorner_55 = Instance.new("UICorner"),
-	Button_2 = Instance.new("Frame"),
+	SupplyDropsTab = Instance.new("ScrollingFrame"),
+	UIListLayout_5 = Instance.new("UIListLayout"),
+	Toggle_17 = Instance.new("Frame"),
 	UICorner_56 = Instance.new("UICorner"),
 	TextLabel_20 = Instance.new("TextLabel"),
+	ToggleBackground_17 = Instance.new("TextButton"),
+	UICorner_57 = Instance.new("UICorner"),
+	TheToggle_17 = Instance.new("Frame"),
+	UICorner_58 = Instance.new("UICorner"),
+	Button_2 = Instance.new("Frame"),
+	UICorner_59 = Instance.new("UICorner"),
+	TextLabel_21 = Instance.new("TextLabel"),
 	ToolsTab = Instance.new("ScrollingFrame"),
 	UIListLayout_6 = Instance.new("UIListLayout"),
-	Toggle_17 = Instance.new("Frame"),
-	UICorner_57 = Instance.new("UICorner"),
-	TextLabel_21 = Instance.new("TextLabel"),
-	ToggleBackground_17 = Instance.new("TextButton"),
-	UICorner_58 = Instance.new("UICorner"),
-	TheToggle_17 = Instance.new("Frame"),
-	UICorner_59 = Instance.new("UICorner"),
 	Toggle_18 = Instance.new("Frame"),
 	UICorner_60 = Instance.new("UICorner"),
 	TextLabel_22 = Instance.new("TextLabel"),
@@ -160,14 +160,21 @@ local ScreenGui = {
 	UICorner_61 = Instance.new("UICorner"),
 	TheToggle_18 = Instance.new("Frame"),
 	UICorner_62 = Instance.new("UICorner"),
+	Toggle_19 = Instance.new("Frame"),
+	UICorner_63 = Instance.new("UICorner"),
+	TextLabel_23 = Instance.new("TextLabel"),
+	ToggleBackground_19 = Instance.new("TextButton"),
+	UICorner_64 = Instance.new("UICorner"),
+	TheToggle_19 = Instance.new("Frame"),
+	UICorner_65 = Instance.new("UICorner"),
 	SettingsTab = Instance.new("ScrollingFrame"),
 	UIListLayout_7 = Instance.new("UIListLayout"),
 	Keybind_2 = Instance.new("Frame"),
-	UICorner_63 = Instance.new("UICorner"),
-	TextLabel_23 = Instance.new("TextLabel"),
-	KeybindText_2 = Instance.new("TextButton"),
-	UICorner_64 = Instance.new("UICorner"),
+	UICorner_66 = Instance.new("UICorner"),
 	TextLabel_24 = Instance.new("TextLabel"),
+	KeybindText_2 = Instance.new("TextButton"),
+	UICorner_67 = Instance.new("UICorner"),
+	TextLabel_25 = Instance.new("TextLabel"),
 	Tabs = Instance.new("ScrollingFrame"),
 	ESPTab_2 = Instance.new("Frame"),
 	ButtonName = Instance.new("TextLabel"),
@@ -188,19 +195,18 @@ local ScreenGui = {
 	SettingsTab_2 = Instance.new("Frame"),
 	ButtonName_6 = Instance.new("TextLabel"),
 	DetectButton_6 = Instance.new("TextButton"),
-	UICorner_65 = Instance.new("UICorner"),
+	UICorner_68 = Instance.new("UICorner"),
 	TopBar = Instance.new("TextLabel"),
 	Notifications = Instance.new("Frame"),
 	UIListLayout_9 = Instance.new("UIListLayout"),
 	Template = Instance.new("Frame"),
-	UICorner_66 = Instance.new("UICorner"),
+	UICorner_69 = Instance.new("UICorner"),
 	Title = Instance.new("TextLabel"),
 	Description = Instance.new("TextLabel"),
 	PowerLevel = Instance.new("TextLabel"),
 	UIAspectRatioConstraint_2 = Instance.new("UIAspectRatioConstraint"),
 	UITextSizeConstraint = Instance.new("UITextSizeConstraint"),
 }
-
 
 ScreenGui.ScreenGui.Parent = game.CoreGui
 ScreenGui.ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
@@ -821,25 +827,8 @@ ScreenGui.TheToggle_10.Size = UDim2.new(0.5, 0, 1, 0)
 
 ScreenGui.UICorner_35.Parent = ScreenGui.TheToggle_10
 
-ScreenGui.ClientTab.Name = "ClientTab"
-ScreenGui.ClientTab.Parent = ScreenGui.TabContent
-ScreenGui.ClientTab.Active = true
-ScreenGui.ClientTab.AnchorPoint = Vector2.new(0.5, 0.5)
-ScreenGui.ClientTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.ClientTab.BackgroundTransparency = 1.000
-ScreenGui.ClientTab.Position = UDim2.new(0.502263784, 0, 0.519646943, 0)
-ScreenGui.ClientTab.Size = UDim2.new(0.995472014, 0, 0.960706174, 0)
-ScreenGui.ClientTab.Visible = false
-ScreenGui.ClientTab.ScrollBarThickness = 0
-ScreenGui.ClientTab.ScrollingEnabled = false
-
-ScreenGui.UIListLayout_4.Parent = ScreenGui.ClientTab
-ScreenGui.UIListLayout_4.HorizontalAlignment = Enum.HorizontalAlignment.Center
-ScreenGui.UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
-ScreenGui.UIListLayout_4.Padding = UDim.new(0.00999999978, 0)
-
 ScreenGui.Toggle_11.Name = "Toggle"
-ScreenGui.Toggle_11.Parent = ScreenGui.ClientTab
+ScreenGui.Toggle_11.Parent = ScreenGui.VisualsTab
 ScreenGui.Toggle_11.AnchorPoint = Vector2.new(0.5, 0.5)
 ScreenGui.Toggle_11.BackgroundColor3 = Color3.fromRGB(64, 68, 76)
 ScreenGui.Toggle_11.Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
@@ -854,7 +843,7 @@ ScreenGui.TextLabel_13.BackgroundTransparency = 1.000
 ScreenGui.TextLabel_13.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
 ScreenGui.TextLabel_13.Size = UDim2.new(0.5, 0, 0.800000012, 0)
 ScreenGui.TextLabel_13.Font = Enum.Font.SourceSansSemibold
-ScreenGui.TextLabel_13.Text = "Infinite Stamina"
+ScreenGui.TextLabel_13.Text = "Waypoints"
 ScreenGui.TextLabel_13.TextColor3 = Color3.fromRGB(255, 255, 255)
 ScreenGui.TextLabel_13.TextScaled = true
 ScreenGui.TextLabel_13.TextSize = 14.000
@@ -886,6 +875,23 @@ ScreenGui.TheToggle_11.Size = UDim2.new(0.5, 0, 1, 0)
 
 ScreenGui.UICorner_38.Parent = ScreenGui.TheToggle_11
 
+ScreenGui.ClientTab.Name = "ClientTab"
+ScreenGui.ClientTab.Parent = ScreenGui.TabContent
+ScreenGui.ClientTab.Active = true
+ScreenGui.ClientTab.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.ClientTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.ClientTab.BackgroundTransparency = 1.000
+ScreenGui.ClientTab.Position = UDim2.new(0.502263784, 0, 0.519646943, 0)
+ScreenGui.ClientTab.Size = UDim2.new(0.995472014, 0, 0.960706174, 0)
+ScreenGui.ClientTab.Visible = false
+ScreenGui.ClientTab.ScrollBarThickness = 0
+ScreenGui.ClientTab.ScrollingEnabled = false
+
+ScreenGui.UIListLayout_4.Parent = ScreenGui.ClientTab
+ScreenGui.UIListLayout_4.HorizontalAlignment = Enum.HorizontalAlignment.Center
+ScreenGui.UIListLayout_4.SortOrder = Enum.SortOrder.LayoutOrder
+ScreenGui.UIListLayout_4.Padding = UDim.new(0.00999999978, 0)
+
 ScreenGui.Toggle_12.Name = "Toggle"
 ScreenGui.Toggle_12.Parent = ScreenGui.ClientTab
 ScreenGui.Toggle_12.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -902,7 +908,7 @@ ScreenGui.TextLabel_14.BackgroundTransparency = 1.000
 ScreenGui.TextLabel_14.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
 ScreenGui.TextLabel_14.Size = UDim2.new(0.5, 0, 0.800000012, 0)
 ScreenGui.TextLabel_14.Font = Enum.Font.SourceSansSemibold
-ScreenGui.TextLabel_14.Text = "No fall damage"
+ScreenGui.TextLabel_14.Text = "Infinite Stamina"
 ScreenGui.TextLabel_14.TextColor3 = Color3.fromRGB(255, 255, 255)
 ScreenGui.TextLabel_14.TextScaled = true
 ScreenGui.TextLabel_14.TextSize = 14.000
@@ -950,7 +956,7 @@ ScreenGui.TextLabel_15.BackgroundTransparency = 1.000
 ScreenGui.TextLabel_15.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
 ScreenGui.TextLabel_15.Size = UDim2.new(0.5, 0, 0.800000012, 0)
 ScreenGui.TextLabel_15.Font = Enum.Font.SourceSansSemibold
-ScreenGui.TextLabel_15.Text = "View Cameras"
+ScreenGui.TextLabel_15.Text = "No fall damage"
 ScreenGui.TextLabel_15.TextColor3 = Color3.fromRGB(255, 255, 255)
 ScreenGui.TextLabel_15.TextScaled = true
 ScreenGui.TextLabel_15.TextSize = 14.000
@@ -998,7 +1004,7 @@ ScreenGui.TextLabel_16.BackgroundTransparency = 1.000
 ScreenGui.TextLabel_16.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
 ScreenGui.TextLabel_16.Size = UDim2.new(0.5, 0, 0.800000012, 0)
 ScreenGui.TextLabel_16.Font = Enum.Font.SourceSansSemibold
-ScreenGui.TextLabel_16.Text = "Timer"
+ScreenGui.TextLabel_16.Text = "View Cameras"
 ScreenGui.TextLabel_16.TextColor3 = Color3.fromRGB(255, 255, 255)
 ScreenGui.TextLabel_16.TextScaled = true
 ScreenGui.TextLabel_16.TextSize = 14.000
@@ -1030,46 +1036,6 @@ ScreenGui.TheToggle_14.Size = UDim2.new(0.5, 0, 1, 0)
 
 ScreenGui.UICorner_47.Parent = ScreenGui.TheToggle_14
 
-ScreenGui.Keybind.Name = "Keybind"
-ScreenGui.Keybind.Parent = ScreenGui.ClientTab
-ScreenGui.Keybind.AnchorPoint = Vector2.new(0.5, 0.5)
-ScreenGui.Keybind.BackgroundColor3 = Color3.fromRGB(64, 68, 76)
-ScreenGui.Keybind.LayoutOrder = 1
-ScreenGui.Keybind.Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
-ScreenGui.Keybind.Size = UDim2.new(0.899999976, 0, 0.0599999987, 0)
-
-ScreenGui.UICorner_48.Parent = ScreenGui.Keybind
-
-ScreenGui.TextLabel_17.Parent = ScreenGui.Keybind
-ScreenGui.TextLabel_17.AnchorPoint = Vector2.new(0.5, 0.5)
-ScreenGui.TextLabel_17.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.TextLabel_17.BackgroundTransparency = 1.000
-ScreenGui.TextLabel_17.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
-ScreenGui.TextLabel_17.Size = UDim2.new(0.5, 0, 0.800000012, 0)
-ScreenGui.TextLabel_17.Font = Enum.Font.SourceSansSemibold
-ScreenGui.TextLabel_17.Text = "Sprint without stamina"
-ScreenGui.TextLabel_17.TextColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.TextLabel_17.TextScaled = true
-ScreenGui.TextLabel_17.TextSize = 14.000
-ScreenGui.TextLabel_17.TextWrapped = true
-ScreenGui.TextLabel_17.TextXAlignment = Enum.TextXAlignment.Left
-
-ScreenGui.KeybindText.Name = "KeybindText"
-ScreenGui.KeybindText.Parent = ScreenGui.Keybind
-ScreenGui.KeybindText.Active = false
-ScreenGui.KeybindText.AnchorPoint = Vector2.new(0.5, 0.5)
-ScreenGui.KeybindText.BackgroundColor3 = Color3.fromRGB(49, 53, 58)
-ScreenGui.KeybindText.Position = UDim2.new(0.896658242, 0, 0.495320231, 0)
-ScreenGui.KeybindText.Selectable = false
-ScreenGui.KeybindText.Size = UDim2.new(0.140835837, 0, 0.629541337, 0)
-ScreenGui.KeybindText.AutoButtonColor = false
-ScreenGui.KeybindText.Text = "Q"
-ScreenGui.KeybindText.TextColor3 = Color3.fromRGB(253, 253, 253)
-ScreenGui.KeybindText.TextScaled = true
-ScreenGui.KeybindText.TextWrapped = true
-
-ScreenGui.UICorner_49.Parent = ScreenGui.KeybindText
-
 ScreenGui.Toggle_15.Name = "Toggle"
 ScreenGui.Toggle_15.Parent = ScreenGui.ClientTab
 ScreenGui.Toggle_15.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -1077,21 +1043,21 @@ ScreenGui.Toggle_15.BackgroundColor3 = Color3.fromRGB(64, 68, 76)
 ScreenGui.Toggle_15.Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
 ScreenGui.Toggle_15.Size = UDim2.new(0.899999976, 0, 0.0599999987, 0)
 
-ScreenGui.UICorner_50.Parent = ScreenGui.Toggle_15
+ScreenGui.UICorner_48.Parent = ScreenGui.Toggle_15
 
-ScreenGui.TextLabel_18.Parent = ScreenGui.Toggle_15
-ScreenGui.TextLabel_18.AnchorPoint = Vector2.new(0.5, 0.5)
-ScreenGui.TextLabel_18.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.TextLabel_18.BackgroundTransparency = 1.000
-ScreenGui.TextLabel_18.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
-ScreenGui.TextLabel_18.Size = UDim2.new(0.5, 0, 0.800000012, 0)
-ScreenGui.TextLabel_18.Font = Enum.Font.SourceSansSemibold
-ScreenGui.TextLabel_18.Text = "Power Level"
-ScreenGui.TextLabel_18.TextColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.TextLabel_18.TextScaled = true
-ScreenGui.TextLabel_18.TextSize = 14.000
-ScreenGui.TextLabel_18.TextWrapped = true
-ScreenGui.TextLabel_18.TextXAlignment = Enum.TextXAlignment.Left
+ScreenGui.TextLabel_17.Parent = ScreenGui.Toggle_15
+ScreenGui.TextLabel_17.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.TextLabel_17.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TextLabel_17.BackgroundTransparency = 1.000
+ScreenGui.TextLabel_17.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
+ScreenGui.TextLabel_17.Size = UDim2.new(0.5, 0, 0.800000012, 0)
+ScreenGui.TextLabel_17.Font = Enum.Font.SourceSansSemibold
+ScreenGui.TextLabel_17.Text = "Timer"
+ScreenGui.TextLabel_17.TextColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TextLabel_17.TextScaled = true
+ScreenGui.TextLabel_17.TextSize = 14.000
+ScreenGui.TextLabel_17.TextWrapped = true
+ScreenGui.TextLabel_17.TextXAlignment = Enum.TextXAlignment.Left
 
 ScreenGui.ToggleBackground_15.Name = "ToggleBackground"
 ScreenGui.ToggleBackground_15.Parent = ScreenGui.Toggle_15
@@ -1107,7 +1073,7 @@ ScreenGui.ToggleBackground_15.TextScaled = true
 ScreenGui.ToggleBackground_15.TextTransparency = 1.000
 ScreenGui.ToggleBackground_15.TextWrapped = true
 
-ScreenGui.UICorner_51.Parent = ScreenGui.ToggleBackground_15
+ScreenGui.UICorner_49.Parent = ScreenGui.ToggleBackground_15
 
 ScreenGui.TheToggle_15.Name = "TheToggle"
 ScreenGui.TheToggle_15.Parent = ScreenGui.ToggleBackground_15
@@ -1116,27 +1082,50 @@ ScreenGui.TheToggle_15.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 ScreenGui.TheToggle_15.Position = UDim2.new(0.24683544, 0, 0.5, 0)
 ScreenGui.TheToggle_15.Size = UDim2.new(0.5, 0, 1, 0)
 
-ScreenGui.UICorner_52.Parent = ScreenGui.TheToggle_15
+ScreenGui.UICorner_50.Parent = ScreenGui.TheToggle_15
 
-ScreenGui.SupplyDropsTab.Name = "SupplyDropsTab"
-ScreenGui.SupplyDropsTab.Parent = ScreenGui.TabContent
-ScreenGui.SupplyDropsTab.Active = true
-ScreenGui.SupplyDropsTab.AnchorPoint = Vector2.new(0.5, 0.5)
-ScreenGui.SupplyDropsTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.SupplyDropsTab.BackgroundTransparency = 1.000
-ScreenGui.SupplyDropsTab.Position = UDim2.new(0.502263784, 0, 0.519646943, 0)
-ScreenGui.SupplyDropsTab.Size = UDim2.new(0.995472014, 0, 0.960706174, 0)
-ScreenGui.SupplyDropsTab.Visible = false
-ScreenGui.SupplyDropsTab.ScrollBarThickness = 0
-ScreenGui.SupplyDropsTab.ScrollingEnabled = false
+ScreenGui.Keybind.Name = "Keybind"
+ScreenGui.Keybind.Parent = ScreenGui.ClientTab
+ScreenGui.Keybind.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.Keybind.BackgroundColor3 = Color3.fromRGB(64, 68, 76)
+ScreenGui.Keybind.LayoutOrder = 1
+ScreenGui.Keybind.Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
+ScreenGui.Keybind.Size = UDim2.new(0.899999976, 0, 0.0599999987, 0)
 
-ScreenGui.UIListLayout_5.Parent = ScreenGui.SupplyDropsTab
-ScreenGui.UIListLayout_5.HorizontalAlignment = Enum.HorizontalAlignment.Center
-ScreenGui.UIListLayout_5.SortOrder = Enum.SortOrder.LayoutOrder
-ScreenGui.UIListLayout_5.Padding = UDim.new(0.00999999978, 0)
+ScreenGui.UICorner_51.Parent = ScreenGui.Keybind
+
+ScreenGui.TextLabel_18.Parent = ScreenGui.Keybind
+ScreenGui.TextLabel_18.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.TextLabel_18.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TextLabel_18.BackgroundTransparency = 1.000
+ScreenGui.TextLabel_18.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
+ScreenGui.TextLabel_18.Size = UDim2.new(0.5, 0, 0.800000012, 0)
+ScreenGui.TextLabel_18.Font = Enum.Font.SourceSansSemibold
+ScreenGui.TextLabel_18.Text = "Sprint without stamina"
+ScreenGui.TextLabel_18.TextColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TextLabel_18.TextScaled = true
+ScreenGui.TextLabel_18.TextSize = 14.000
+ScreenGui.TextLabel_18.TextWrapped = true
+ScreenGui.TextLabel_18.TextXAlignment = Enum.TextXAlignment.Left
+
+ScreenGui.KeybindText.Name = "KeybindText"
+ScreenGui.KeybindText.Parent = ScreenGui.Keybind
+ScreenGui.KeybindText.Active = false
+ScreenGui.KeybindText.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.KeybindText.BackgroundColor3 = Color3.fromRGB(49, 53, 58)
+ScreenGui.KeybindText.Position = UDim2.new(0.896658242, 0, 0.495320231, 0)
+ScreenGui.KeybindText.Selectable = false
+ScreenGui.KeybindText.Size = UDim2.new(0.140835837, 0, 0.629541337, 0)
+ScreenGui.KeybindText.AutoButtonColor = false
+ScreenGui.KeybindText.Text = "Q"
+ScreenGui.KeybindText.TextColor3 = Color3.fromRGB(253, 253, 253)
+ScreenGui.KeybindText.TextScaled = true
+ScreenGui.KeybindText.TextWrapped = true
+
+ScreenGui.UICorner_52.Parent = ScreenGui.KeybindText
 
 ScreenGui.Toggle_16.Name = "Toggle"
-ScreenGui.Toggle_16.Parent = ScreenGui.SupplyDropsTab
+ScreenGui.Toggle_16.Parent = ScreenGui.ClientTab
 ScreenGui.Toggle_16.AnchorPoint = Vector2.new(0.5, 0.5)
 ScreenGui.Toggle_16.BackgroundColor3 = Color3.fromRGB(64, 68, 76)
 ScreenGui.Toggle_16.Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
@@ -1151,7 +1140,7 @@ ScreenGui.TextLabel_19.BackgroundTransparency = 1.000
 ScreenGui.TextLabel_19.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
 ScreenGui.TextLabel_19.Size = UDim2.new(0.5, 0, 0.800000012, 0)
 ScreenGui.TextLabel_19.Font = Enum.Font.SourceSansSemibold
-ScreenGui.TextLabel_19.Text = "Bypass Supply Drop Lock"
+ScreenGui.TextLabel_19.Text = "Power Level"
 ScreenGui.TextLabel_19.TextColor3 = Color3.fromRGB(255, 255, 255)
 ScreenGui.TextLabel_19.TextScaled = true
 ScreenGui.TextLabel_19.TextSize = 14.000
@@ -1183,6 +1172,71 @@ ScreenGui.TheToggle_16.Size = UDim2.new(0.5, 0, 1, 0)
 
 ScreenGui.UICorner_55.Parent = ScreenGui.TheToggle_16
 
+ScreenGui.SupplyDropsTab.Name = "SupplyDropsTab"
+ScreenGui.SupplyDropsTab.Parent = ScreenGui.TabContent
+ScreenGui.SupplyDropsTab.Active = true
+ScreenGui.SupplyDropsTab.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.SupplyDropsTab.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.SupplyDropsTab.BackgroundTransparency = 1.000
+ScreenGui.SupplyDropsTab.Position = UDim2.new(0.502263784, 0, 0.519646943, 0)
+ScreenGui.SupplyDropsTab.Size = UDim2.new(0.995472014, 0, 0.960706174, 0)
+ScreenGui.SupplyDropsTab.Visible = false
+ScreenGui.SupplyDropsTab.ScrollBarThickness = 0
+ScreenGui.SupplyDropsTab.ScrollingEnabled = false
+
+ScreenGui.UIListLayout_5.Parent = ScreenGui.SupplyDropsTab
+ScreenGui.UIListLayout_5.HorizontalAlignment = Enum.HorizontalAlignment.Center
+ScreenGui.UIListLayout_5.SortOrder = Enum.SortOrder.LayoutOrder
+ScreenGui.UIListLayout_5.Padding = UDim.new(0.00999999978, 0)
+
+ScreenGui.Toggle_17.Name = "Toggle"
+ScreenGui.Toggle_17.Parent = ScreenGui.SupplyDropsTab
+ScreenGui.Toggle_17.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.Toggle_17.BackgroundColor3 = Color3.fromRGB(64, 68, 76)
+ScreenGui.Toggle_17.Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
+ScreenGui.Toggle_17.Size = UDim2.new(0.899999976, 0, 0.0599999987, 0)
+
+ScreenGui.UICorner_56.Parent = ScreenGui.Toggle_17
+
+ScreenGui.TextLabel_20.Parent = ScreenGui.Toggle_17
+ScreenGui.TextLabel_20.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.TextLabel_20.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TextLabel_20.BackgroundTransparency = 1.000
+ScreenGui.TextLabel_20.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
+ScreenGui.TextLabel_20.Size = UDim2.new(0.5, 0, 0.800000012, 0)
+ScreenGui.TextLabel_20.Font = Enum.Font.SourceSansSemibold
+ScreenGui.TextLabel_20.Text = "Bypass Supply Drop Lock"
+ScreenGui.TextLabel_20.TextColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TextLabel_20.TextScaled = true
+ScreenGui.TextLabel_20.TextSize = 14.000
+ScreenGui.TextLabel_20.TextWrapped = true
+ScreenGui.TextLabel_20.TextXAlignment = Enum.TextXAlignment.Left
+
+ScreenGui.ToggleBackground_17.Name = "ToggleBackground"
+ScreenGui.ToggleBackground_17.Parent = ScreenGui.Toggle_17
+ScreenGui.ToggleBackground_17.Active = false
+ScreenGui.ToggleBackground_17.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.ToggleBackground_17.BackgroundColor3 = Color3.fromRGB(49, 53, 58)
+ScreenGui.ToggleBackground_17.Position = UDim2.new(0.87407136, 0, 0.495319813, 0)
+ScreenGui.ToggleBackground_17.Selectable = false
+ScreenGui.ToggleBackground_17.Size = UDim2.new(0.186009586, 0, 0.629541337, 0)
+ScreenGui.ToggleBackground_17.AutoButtonColor = false
+ScreenGui.ToggleBackground_17.Text = ""
+ScreenGui.ToggleBackground_17.TextScaled = true
+ScreenGui.ToggleBackground_17.TextTransparency = 1.000
+ScreenGui.ToggleBackground_17.TextWrapped = true
+
+ScreenGui.UICorner_57.Parent = ScreenGui.ToggleBackground_17
+
+ScreenGui.TheToggle_17.Name = "TheToggle"
+ScreenGui.TheToggle_17.Parent = ScreenGui.ToggleBackground_17
+ScreenGui.TheToggle_17.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.TheToggle_17.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TheToggle_17.Position = UDim2.new(0.24683544, 0, 0.5, 0)
+ScreenGui.TheToggle_17.Size = UDim2.new(0.5, 0, 1, 0)
+
+ScreenGui.UICorner_58.Parent = ScreenGui.TheToggle_17
+
 ScreenGui.Button_2.Name = "Button"
 ScreenGui.Button_2.Parent = ScreenGui.SupplyDropsTab
 ScreenGui.Button_2.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -1190,21 +1244,21 @@ ScreenGui.Button_2.BackgroundColor3 = Color3.fromRGB(64, 68, 76)
 ScreenGui.Button_2.Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
 ScreenGui.Button_2.Size = UDim2.new(0.899999976, 0, 0.0599999987, 0)
 
-ScreenGui.UICorner_56.Parent = ScreenGui.Button_2
+ScreenGui.UICorner_59.Parent = ScreenGui.Button_2
 
-ScreenGui.TextLabel_20.Parent = ScreenGui.Button_2
-ScreenGui.TextLabel_20.AnchorPoint = Vector2.new(0.5, 0.5)
-ScreenGui.TextLabel_20.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.TextLabel_20.BackgroundTransparency = 1.000
-ScreenGui.TextLabel_20.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
-ScreenGui.TextLabel_20.Size = UDim2.new(0.5, 0, 0.800000012, 0)
-ScreenGui.TextLabel_20.Font = Enum.Font.SourceSansSemibold
-ScreenGui.TextLabel_20.Text = "View Supply Drop Items"
-ScreenGui.TextLabel_20.TextColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.TextLabel_20.TextScaled = true
-ScreenGui.TextLabel_20.TextSize = 14.000
-ScreenGui.TextLabel_20.TextWrapped = true
-ScreenGui.TextLabel_20.TextXAlignment = Enum.TextXAlignment.Left
+ScreenGui.TextLabel_21.Parent = ScreenGui.Button_2
+ScreenGui.TextLabel_21.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.TextLabel_21.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TextLabel_21.BackgroundTransparency = 1.000
+ScreenGui.TextLabel_21.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
+ScreenGui.TextLabel_21.Size = UDim2.new(0.5, 0, 0.800000012, 0)
+ScreenGui.TextLabel_21.Font = Enum.Font.SourceSansSemibold
+ScreenGui.TextLabel_21.Text = "View Supply Drop Items"
+ScreenGui.TextLabel_21.TextColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TextLabel_21.TextScaled = true
+ScreenGui.TextLabel_21.TextSize = 14.000
+ScreenGui.TextLabel_21.TextWrapped = true
+ScreenGui.TextLabel_21.TextXAlignment = Enum.TextXAlignment.Left
 
 ScreenGui.ToolsTab.Name = "ToolsTab"
 ScreenGui.ToolsTab.Parent = ScreenGui.TabContent
@@ -1223,54 +1277,6 @@ ScreenGui.UIListLayout_6.HorizontalAlignment = Enum.HorizontalAlignment.Center
 ScreenGui.UIListLayout_6.SortOrder = Enum.SortOrder.LayoutOrder
 ScreenGui.UIListLayout_6.Padding = UDim.new(0.00999999978, 0)
 
-ScreenGui.Toggle_17.Name = "Toggle"
-ScreenGui.Toggle_17.Parent = ScreenGui.ToolsTab
-ScreenGui.Toggle_17.AnchorPoint = Vector2.new(0.5, 0.5)
-ScreenGui.Toggle_17.BackgroundColor3 = Color3.fromRGB(64, 68, 76)
-ScreenGui.Toggle_17.Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
-ScreenGui.Toggle_17.Size = UDim2.new(0.899999976, 0, 0.0599999987, 0)
-
-ScreenGui.UICorner_57.Parent = ScreenGui.Toggle_17
-
-ScreenGui.TextLabel_21.Parent = ScreenGui.Toggle_17
-ScreenGui.TextLabel_21.AnchorPoint = Vector2.new(0.5, 0.5)
-ScreenGui.TextLabel_21.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.TextLabel_21.BackgroundTransparency = 1.000
-ScreenGui.TextLabel_21.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
-ScreenGui.TextLabel_21.Size = UDim2.new(0.5, 0, 0.800000012, 0)
-ScreenGui.TextLabel_21.Font = Enum.Font.SourceSansSemibold
-ScreenGui.TextLabel_21.Text = "Stun Stick Modifier"
-ScreenGui.TextLabel_21.TextColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.TextLabel_21.TextScaled = true
-ScreenGui.TextLabel_21.TextSize = 14.000
-ScreenGui.TextLabel_21.TextWrapped = true
-ScreenGui.TextLabel_21.TextXAlignment = Enum.TextXAlignment.Left
-
-ScreenGui.ToggleBackground_17.Name = "ToggleBackground"
-ScreenGui.ToggleBackground_17.Parent = ScreenGui.Toggle_17
-ScreenGui.ToggleBackground_17.Active = false
-ScreenGui.ToggleBackground_17.AnchorPoint = Vector2.new(0.5, 0.5)
-ScreenGui.ToggleBackground_17.BackgroundColor3 = Color3.fromRGB(49, 53, 58)
-ScreenGui.ToggleBackground_17.Position = UDim2.new(0.87407136, 0, 0.495319813, 0)
-ScreenGui.ToggleBackground_17.Selectable = false
-ScreenGui.ToggleBackground_17.Size = UDim2.new(0.186009586, 0, 0.629541337, 0)
-ScreenGui.ToggleBackground_17.AutoButtonColor = false
-ScreenGui.ToggleBackground_17.Text = ""
-ScreenGui.ToggleBackground_17.TextScaled = true
-ScreenGui.ToggleBackground_17.TextTransparency = 1.000
-ScreenGui.ToggleBackground_17.TextWrapped = true
-
-ScreenGui.UICorner_58.Parent = ScreenGui.ToggleBackground_17
-
-ScreenGui.TheToggle_17.Name = "TheToggle"
-ScreenGui.TheToggle_17.Parent = ScreenGui.ToggleBackground_17
-ScreenGui.TheToggle_17.AnchorPoint = Vector2.new(0.5, 0.5)
-ScreenGui.TheToggle_17.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.TheToggle_17.Position = UDim2.new(0.24683544, 0, 0.5, 0)
-ScreenGui.TheToggle_17.Size = UDim2.new(0.5, 0, 1, 0)
-
-ScreenGui.UICorner_59.Parent = ScreenGui.TheToggle_17
-
 ScreenGui.Toggle_18.Name = "Toggle"
 ScreenGui.Toggle_18.Parent = ScreenGui.ToolsTab
 ScreenGui.Toggle_18.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -1287,7 +1293,7 @@ ScreenGui.TextLabel_22.BackgroundTransparency = 1.000
 ScreenGui.TextLabel_22.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
 ScreenGui.TextLabel_22.Size = UDim2.new(0.5, 0, 0.800000012, 0)
 ScreenGui.TextLabel_22.Font = Enum.Font.SourceSansSemibold
-ScreenGui.TextLabel_22.Text = "UV Lamp Modifier"
+ScreenGui.TextLabel_22.Text = "Stun Stick Modifier"
 ScreenGui.TextLabel_22.TextColor3 = Color3.fromRGB(255, 255, 255)
 ScreenGui.TextLabel_22.TextScaled = true
 ScreenGui.TextLabel_22.TextSize = 14.000
@@ -1319,6 +1325,54 @@ ScreenGui.TheToggle_18.Size = UDim2.new(0.5, 0, 1, 0)
 
 ScreenGui.UICorner_62.Parent = ScreenGui.TheToggle_18
 
+ScreenGui.Toggle_19.Name = "Toggle"
+ScreenGui.Toggle_19.Parent = ScreenGui.ToolsTab
+ScreenGui.Toggle_19.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.Toggle_19.BackgroundColor3 = Color3.fromRGB(64, 68, 76)
+ScreenGui.Toggle_19.Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
+ScreenGui.Toggle_19.Size = UDim2.new(0.899999976, 0, 0.0599999987, 0)
+
+ScreenGui.UICorner_63.Parent = ScreenGui.Toggle_19
+
+ScreenGui.TextLabel_23.Parent = ScreenGui.Toggle_19
+ScreenGui.TextLabel_23.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.TextLabel_23.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TextLabel_23.BackgroundTransparency = 1.000
+ScreenGui.TextLabel_23.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
+ScreenGui.TextLabel_23.Size = UDim2.new(0.5, 0, 0.800000012, 0)
+ScreenGui.TextLabel_23.Font = Enum.Font.SourceSansSemibold
+ScreenGui.TextLabel_23.Text = "UV Lamp Modifier"
+ScreenGui.TextLabel_23.TextColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TextLabel_23.TextScaled = true
+ScreenGui.TextLabel_23.TextSize = 14.000
+ScreenGui.TextLabel_23.TextWrapped = true
+ScreenGui.TextLabel_23.TextXAlignment = Enum.TextXAlignment.Left
+
+ScreenGui.ToggleBackground_19.Name = "ToggleBackground"
+ScreenGui.ToggleBackground_19.Parent = ScreenGui.Toggle_19
+ScreenGui.ToggleBackground_19.Active = false
+ScreenGui.ToggleBackground_19.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.ToggleBackground_19.BackgroundColor3 = Color3.fromRGB(49, 53, 58)
+ScreenGui.ToggleBackground_19.Position = UDim2.new(0.87407136, 0, 0.495319813, 0)
+ScreenGui.ToggleBackground_19.Selectable = false
+ScreenGui.ToggleBackground_19.Size = UDim2.new(0.186009586, 0, 0.629541337, 0)
+ScreenGui.ToggleBackground_19.AutoButtonColor = false
+ScreenGui.ToggleBackground_19.Text = ""
+ScreenGui.ToggleBackground_19.TextScaled = true
+ScreenGui.ToggleBackground_19.TextTransparency = 1.000
+ScreenGui.ToggleBackground_19.TextWrapped = true
+
+ScreenGui.UICorner_64.Parent = ScreenGui.ToggleBackground_19
+
+ScreenGui.TheToggle_19.Name = "TheToggle"
+ScreenGui.TheToggle_19.Parent = ScreenGui.ToggleBackground_19
+ScreenGui.TheToggle_19.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.TheToggle_19.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TheToggle_19.Position = UDim2.new(0.24683544, 0, 0.5, 0)
+ScreenGui.TheToggle_19.Size = UDim2.new(0.5, 0, 1, 0)
+
+ScreenGui.UICorner_65.Parent = ScreenGui.TheToggle_19
+
 ScreenGui.SettingsTab.Name = "SettingsTab"
 ScreenGui.SettingsTab.Parent = ScreenGui.TabContent
 ScreenGui.SettingsTab.Active = true
@@ -1343,21 +1397,21 @@ ScreenGui.Keybind_2.BackgroundColor3 = Color3.fromRGB(64, 68, 76)
 ScreenGui.Keybind_2.Position = UDim2.new(0.0450000018, 0, 0.112000003, 0)
 ScreenGui.Keybind_2.Size = UDim2.new(0.899999976, 0, 0.0599999987, 0)
 
-ScreenGui.UICorner_63.Parent = ScreenGui.Keybind_2
+ScreenGui.UICorner_66.Parent = ScreenGui.Keybind_2
 
-ScreenGui.TextLabel_23.Parent = ScreenGui.Keybind_2
-ScreenGui.TextLabel_23.AnchorPoint = Vector2.new(0.5, 0.5)
-ScreenGui.TextLabel_23.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.TextLabel_23.BackgroundTransparency = 1.000
-ScreenGui.TextLabel_23.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
-ScreenGui.TextLabel_23.Size = UDim2.new(0.5, 0, 0.800000012, 0)
-ScreenGui.TextLabel_23.Font = Enum.Font.SourceSansSemibold
-ScreenGui.TextLabel_23.Text = "Toggle UI"
-ScreenGui.TextLabel_23.TextColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.TextLabel_23.TextScaled = true
-ScreenGui.TextLabel_23.TextSize = 14.000
-ScreenGui.TextLabel_23.TextWrapped = true
-ScreenGui.TextLabel_23.TextXAlignment = Enum.TextXAlignment.Left
+ScreenGui.TextLabel_24.Parent = ScreenGui.Keybind_2
+ScreenGui.TextLabel_24.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.TextLabel_24.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TextLabel_24.BackgroundTransparency = 1.000
+ScreenGui.TextLabel_24.Position = UDim2.new(0.268600971, 0, 0.473150373, 0)
+ScreenGui.TextLabel_24.Size = UDim2.new(0.5, 0, 0.800000012, 0)
+ScreenGui.TextLabel_24.Font = Enum.Font.SourceSansSemibold
+ScreenGui.TextLabel_24.Text = "Toggle UI"
+ScreenGui.TextLabel_24.TextColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TextLabel_24.TextScaled = true
+ScreenGui.TextLabel_24.TextSize = 14.000
+ScreenGui.TextLabel_24.TextWrapped = true
+ScreenGui.TextLabel_24.TextXAlignment = Enum.TextXAlignment.Left
 
 ScreenGui.KeybindText_2.Name = "KeybindText"
 ScreenGui.KeybindText_2.Parent = ScreenGui.Keybind_2
@@ -1373,20 +1427,20 @@ ScreenGui.KeybindText_2.TextColor3 = Color3.fromRGB(253, 253, 253)
 ScreenGui.KeybindText_2.TextScaled = true
 ScreenGui.KeybindText_2.TextWrapped = true
 
-ScreenGui.UICorner_64.Parent = ScreenGui.KeybindText_2
+ScreenGui.UICorner_67.Parent = ScreenGui.KeybindText_2
 
-ScreenGui.TextLabel_24.Parent = ScreenGui.Main
-ScreenGui.TextLabel_24.AnchorPoint = Vector2.new(0.5, 0.5)
-ScreenGui.TextLabel_24.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-ScreenGui.TextLabel_24.BackgroundTransparency = 1.000
-ScreenGui.TextLabel_24.Position = UDim2.new(0.132247657, 0, 0.0910828635, 0)
-ScreenGui.TextLabel_24.Size = UDim2.new(0.227372751, 0, 0.183427215, 0)
-ScreenGui.TextLabel_24.Font = Enum.Font.GothamMedium
-ScreenGui.TextLabel_24.Text = "Rake Evolved"
-ScreenGui.TextLabel_24.TextColor3 = Color3.fromRGB(254, 254, 254)
-ScreenGui.TextLabel_24.TextScaled = true
-ScreenGui.TextLabel_24.TextSize = 14.000
-ScreenGui.TextLabel_24.TextWrapped = true
+ScreenGui.TextLabel_25.Parent = ScreenGui.Main
+ScreenGui.TextLabel_25.AnchorPoint = Vector2.new(0.5, 0.5)
+ScreenGui.TextLabel_25.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ScreenGui.TextLabel_25.BackgroundTransparency = 1.000
+ScreenGui.TextLabel_25.Position = UDim2.new(0.132247657, 0, 0.0910828635, 0)
+ScreenGui.TextLabel_25.Size = UDim2.new(0.227372751, 0, 0.183427215, 0)
+ScreenGui.TextLabel_25.Font = Enum.Font.GothamMedium
+ScreenGui.TextLabel_25.Text = "Rake Evolved"
+ScreenGui.TextLabel_25.TextColor3 = Color3.fromRGB(254, 254, 254)
+ScreenGui.TextLabel_25.TextScaled = true
+ScreenGui.TextLabel_25.TextSize = 14.000
+ScreenGui.TextLabel_25.TextWrapped = true
 
 ScreenGui.Tabs.Name = "Tabs"
 ScreenGui.Tabs.Parent = ScreenGui.Main
@@ -1625,7 +1679,7 @@ ScreenGui.DetectButton_6.TextScaled = true
 ScreenGui.DetectButton_6.TextSize = 14.000
 ScreenGui.DetectButton_6.TextWrapped = true
 
-ScreenGui.UICorner_65.Parent = ScreenGui.Main
+ScreenGui.UICorner_68.Parent = ScreenGui.Main
 
 ScreenGui.TopBar.Name = "TopBar"
 ScreenGui.TopBar.Parent = ScreenGui.Main
@@ -1664,7 +1718,7 @@ ScreenGui.Template.Position = UDim2.new(0.655357897, 0, 0.902989805, 0)
 ScreenGui.Template.Size = UDim2.new(0.689284623, 0, 0.194020584, 0)
 ScreenGui.Template.Visible = false
 
-ScreenGui.UICorner_66.Parent = ScreenGui.Template
+ScreenGui.UICorner_69.Parent = ScreenGui.Template
 
 ScreenGui.Title.Name = "Title"
 ScreenGui.Title.Parent = ScreenGui.Template
