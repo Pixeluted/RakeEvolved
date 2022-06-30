@@ -8,11 +8,14 @@ local ScrapFolder = workspace:WaitForChild("Filter"):WaitForChild("ScrapSpawns")
 local Timer = ReplicatedStorage:WaitForChild("Timer")
 local CurrentLightingProperties = ReplicatedStorage:WaitForChild("CurrentLightingProperties")
 
-local ScrapLabels = {}
-local RakeLabel = nil
-local FlareGunLabel = nil
-local SupplyDropLabels = {}
-local PlayersLabels = {}
+local Labels = {
+	["ScrapLabels"] = {},
+	["RakeLabel"] = nil,
+	["FlareGunLabel"] = nil,
+	["SupplyDropLabels"] = {},
+	["PlayersLabels"] = {},
+	["WaypointLabels"] = {}
+}
 
 local independentStamina = false
 
@@ -29,6 +32,14 @@ local DragMousePosition
 local FramePosition
 
 local Dragabble
+
+local MapPoints = {
+    ["Safehouse"] = Vector3.new(-352.336, 16.1844, 63.7742),
+    ["Powerstation"] = Vector3.new(-311.052, 21.2032, -209.896),
+    ["Shop"] = Vector3.new(-24.9913, 16.3039, -252.213),
+    ["ObservationTower"] = Vector3.new(33.1612, 16.209, -45.1087),
+    ["Basecamp"] = Vector3.new(-75.4166, 16.7219, 214.085),
+}
 
 TopBar.InputBegan:Connect(function(input)
 	if input.UserInputType == Enum.UserInputType.MouseButton1 then 
@@ -165,7 +176,7 @@ end
 
 --// ESP Functions
 
-local function newLabel(Part, Text, isPlayer)
+local function newLabel(Part, Text, isPlayer, isWaypoint)
 	local billgui = Instance.new("BillboardGui")
 	billgui.Parent = Part
 	billgui.Adornee = Part
@@ -188,18 +199,22 @@ local function newLabel(Part, Text, isPlayer)
 	label.Name = "Label"
 
 	if Text == "Scrap" then
-		table.insert(ScrapLabels, billgui)
+		table.insert(Labels.ScrapLabels, billgui)
 	elseif Text == "Rake" then
 		label.TextColor3 = Color3.fromRGB(255, 0, 0)
-		RakeLabel = billgui
+		Labels.RakeLabel = billgui
 	elseif Text == "Flare Gun" then
 		label.TextColor3 = Color3.fromRGB(0, 170, 255)
-		FlareGunLabel = billgui
+		Labels.FlareGunLabel = billgui
 	elseif Text == "Supply Crate" then
 		label.TextColor3 = Color3.fromRGB(85, 170, 0)
-		table.insert(SupplyDropLabels, billgui)
+		table.insert(Labels.SupplyDropLabels, billgui)
 	elseif isPlayer == true then
-		table.insert(PlayersLabels, billgui)
+		label.TextColor3 = Color3.fromRGB(255, 128, 0)
+		table.insert(Labels.PlayersLabels, billgui)
+	elseif isWaypoint == true then
+		label.TextColor3 = Color3.fromRGB(255, 247, 0)
+		table.insert(Labels.WaypointLabels, billgui)
 	end
 end
 
@@ -451,7 +466,7 @@ RunService.RenderStepped:Connect(function()
 	if toggles["Scrap ESP"] == true then
 		ESPScrap()	   
 	else 
-		for _,scrapBil in pairs(ScrapLabels) do 
+		for _,scrapBil in pairs(Labels.ScrapLabels) do 
 			scrapBil:Destroy()
 		end
 	end
@@ -469,9 +484,9 @@ RunService.RenderStepped:Connect(function()
 			end
 		end
 	else 
-		if RakeLabel then 
-			RakeLabel:Destroy()
-			RakeLabel = nil 
+		if Labels.RakeLabel then 
+			Labels.RakeLabel:Destroy()
+			Labels.RakeLabel = nil 
 		end
 
 	end
@@ -492,7 +507,7 @@ RunService.RenderStepped:Connect(function()
 			end
 		end 
 	else 
-		for _,v in pairs(SupplyDropLabels) do 
+		for _,v in pairs(Labels.SupplyDropLabels) do 
 			v:Destroy()    
 		end
 	end
@@ -514,8 +529,24 @@ RunService.RenderStepped:Connect(function()
 		end
 
 	else
-		for _,bill in pairs(PlayersLabels) do 
+		for _,bill in pairs(Labels.PlayersLabels) do 
 			bill:Destroy()
+		end
+	end
+
+	
+	if toggles["Flare Gun ESP"] == true then
+		local FlareGunInWorkspace = workspace:FindFirstChild("FlareGunPickUp")
+
+		if FlareGunInWorkspace then
+			if not FlareGunInWorkspace:FindFirstChild("Isguied") then
+				newLabel(FlareGunInWorkspace, "Flare Gun")
+			end
+		end
+	else 
+		if Labels.FlareGunLabel then
+			Labels.FlareGunLabel:Destroy()
+			Labels.FlareGunLabel = nil
 		end
 	end
 
@@ -571,19 +602,11 @@ RunService.RenderStepped:Connect(function()
 		TimeInfo.Visible = false  
 	end
 
-	if toggles["Flare Gun ESP"] == true then
-		local FlareGunInWorkspace = workspace:FindFirstChild("FlareGunPickUp")
-
-		if FlareGunInWorkspace then
-			if not FlareGunInWorkspace:FindFirstChild("Isguied") then
-				newLabel(FlareGunInWorkspace, "Flare Gun")
-			end
-		end
+	if toggles["Power Level"] == true then
+		PowerLevel.Visible = true
+		PowerLevel.Text = "Power Level: "..ReplicatedStorage.PowerValues.PowerLevel.Value
 	else 
-		if FlareGunLabel then
-			FlareGunLabel:Destroy()
-			FlareGunLabel = nil
-		end
+		PowerLevel.Visible = false
 	end
 
 	if independentStamina then
@@ -613,7 +636,6 @@ RunService.RenderStepped:Connect(function()
 
 			if theTool then
 				modifyStunStick(theTool)
-
 			end
 		end
 	end
@@ -624,16 +646,35 @@ RunService.RenderStepped:Connect(function()
 
 			if theTool then
 				modifyUV_Lamp(theTool)
-
 			end
 		end
 	end
 
-	if toggles["Power Level"] == true then
-		PowerLevel.Visible = true
-		PowerLevel.Text = "Power Level: "..ReplicatedStorage.PowerValues.PowerLevel.Value
+	--// idk
+
+	if toggles["Waypoints"] == true then
+		print("yes toggle")
+		if #Labels.WaypointLabels == 0 then
+			print("no labels already created")
+			for mapPoint, point in pairs(MapPoints) do 
+				local part = Instance.new("Part")
+				part.Transparency = 1
+				part.Anchored = true
+				part.CanCollide = false 
+				part.Position = point
+				part.Parent = workspace
+
+				newLabel(part, mapPoint, false, true)
+				print("created part for "..mapPoint)
+			end
+		end
 	else 
-		PowerLevel.Visible = false
+		for _,bill in pairs(Labels.WaypointLabels) do 
+			bill.Parent:Destroy()
+			print("destroying")
+		end
+
+		Labels.WaypointLabels = {}
 	end
 end)
 
