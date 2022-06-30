@@ -23,7 +23,7 @@ local bypassOnceEnabled = false
 local StunStickModified = false
 local UVModified = false
 
-local TopBar, TabContent, Tabs, Template, Notifications, Main = loadstring(readfile("RakeEvolvedDev/MainUI.lua"))()
+local TopBar, TabContent, Tabs, Template, Notifications, PowerLevel, Main = loadstring(readfile("RakeEvolvedDev/MainUI.lua"))()
 
 local DragMousePosition
 local FramePosition
@@ -615,6 +615,13 @@ RunService.RenderStepped:Connect(function()
 				createNotification("Done!", "Sucessfully modified your UV Lamp!", 5)
 			end
 		end
+	end
+
+	if toggles["Power Level"] == true then
+		PowerLevel.Visible = true
+		PowerLevel.Text = "Power Level: "..ReplicatedStorage.PowerValues.PowerLevel.Value
+	else 
+		PowerLevel.Visible = false
 	end
 end)
 
