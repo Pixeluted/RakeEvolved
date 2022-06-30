@@ -99,6 +99,19 @@ end
 
 --// Interactive shit handling
 
+local loadData = nil
+if isfolder("RakeEvolved") then 
+	if isfile("RakeEvolved/settings.json") then
+		loadData = readfile("RakeEvolved/settings.json")
+		loadData = game.HttpService:JSONDecode(loadData)
+	end 
+else 
+	makefolder("RakeEvolved")
+	local defaultData = {}
+	defaultData = game.HttpService:JSONEncode(defaultData)
+	writefile("RakeEvolved/settings.json", defaultData)
+end
+
 local callbacks = {}
 local toggles = {}
 local keybinds = {}
@@ -126,6 +139,8 @@ function handleToggleClick(v)
 	else
 		v.ToggleBackground.TheToggle:TweenPosition(UDim2.new(0.247, 0, 0.5, 0), nil, nil, 0.1)
 	end
+
+	writefile("RakeEvolved/settings.json", game.HttpService:JSONEncode(toggles))
 end
 
 function handleKeyBind(v)
@@ -159,6 +174,12 @@ for _,Thetab in pairs(TabContent:GetChildren()) do
 						handleToggleClick(v)
 					end)
 
+					toggles[v.TextLabel.Text] = false
+
+					if loadData[v.TextLabel.Text] == true then
+						toggles[v.TextLabel.Text] = true
+						v.ToggleBackground.TheToggle:TweenPosition(UDim2.new(0.747, 0, 0.543, 0), nil, nil, 0.1)
+					end
 				elseif v.Name == "Keybind" then
 
 					keybinds[v.TextLabel.Text] = v.KeybindText.Text
@@ -358,6 +379,16 @@ callbacks["View Supply Drop Items"] = function()
 	else 
 		createNotification("No supply crate!", "There is currently no supply crate spawned!", 5)
 	end
+end
+
+--// Disable Borders
+
+callbacks["Disable Map Borders"] = function()
+	for _, border in pairs(workspace.Filter.InvisibleWalls:GetChildren()) do 
+		border:Destroy()
+	end
+
+	createNotification("Done!", "All borders around the map were disabled. (Server borders are not possible to remove)", 5)
 end
 
 --// Modifiying
@@ -743,6 +774,7 @@ end)
 --// Died Event
 
 function handleDeath()
+	setclipboard(toggles)
 	Player.CharacterAdded:Wait()
 	Player.Character:WaitForChild("HumanoidRootPart")
 	hookedStamina = false
