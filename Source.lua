@@ -511,14 +511,14 @@ RunService.RenderStepped:Connect(function()
 		if hookedStamina == false then
 			for _,v in ipairs(getloadedmodules()) do 
 				if v.Name == "M_H" then 
-					--LPH_JIT_ULTRA(function(v)
+					LPH_JIT_ULTRA(function(v)
 						local module = require(v)
 						local old 
 						old = hookfunction(module.TakeStamina, function(smth, amount)
 							if amount > 0 then return old(smth, -0.5) end
 							return old(smth, amount)
 						end)
-					--end)(v)
+					end)(v)
 				end
 			end
 
