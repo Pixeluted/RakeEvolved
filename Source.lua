@@ -23,7 +23,7 @@ local bypassOnceEnabled = false
 local StunStickModified = false
 local UVModified = false
 
-local TopBar, TabContent, Tabs, Template, Notifications, Main = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/hi/main/Ilikedogs.lua'))()
+local TopBar, TabContent, Tabs, Template, Notifications, PowerLevel, Main = loadstring(readfile("RakeEvolvedDev/MainUI.lua"))()
 
 local DragMousePosition
 local FramePosition
@@ -258,7 +258,7 @@ local currentIndex = 1
 --// Supply Drop Functions
 
 function viewSupplyDropItems(Box)
-	local MainViewer = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/hi/main/viewer.lua'))()
+	local MainViewer = loadstring(readfile("RakeEvolvedDev/SupplyDropGUI.lua"))()
 
 	local ItemsFolder = Box.Items_Folder
 
@@ -287,7 +287,7 @@ function bypassSupplyDropLock(Box)
 	local connection
 	connection = Box.GUIPart.ProximityPrompt.Triggered:Connect(function(plr)
 		if plr == Player and not Box.DB_Folder:FindFirstChild(Player.Name) then
-			local MainViewer = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/hi/main/viewer.lua'))()
+			local MainViewer = loadstring(readfile("RakeEvolvedDev/SupplyDropGUI.lua"))()
 
 			local ItemsFolder = Box.Items_Folder
 
@@ -329,7 +329,7 @@ callbacks["View Supply Drop Items"] = function()
 		if #SupplyCratesFolder:GetChildren() >= 2 then 
 			for _,box in pairs(SupplyCratesFolder:GetChildren()) do 
 				if box:FindFirstChild("UnlockValue") then 
-					if box.UnlockValue.Value >= 100 then 
+					if box.UnlockValue.Value <= 0 or not box.DB_Folder:FindFirstChild(Player.Name) then 
 						selected = box 
 						break
 					end
@@ -511,14 +511,14 @@ RunService.RenderStepped:Connect(function()
 		if hookedStamina == false then
 			for _,v in ipairs(getloadedmodules()) do 
 				if v.Name == "M_H" then 
-					LPH_JIT_ULTRA(function(v)
+					--LPH_JIT_ULTRA(function(v)
 						local module = require(v)
 						local old 
 						old = hookfunction(module.TakeStamina, function(smth, amount)
 							if amount > 0 then return old(smth, -0.5) end
 							return old(smth, amount)
 						end)
-					end)(v)
+					--end)(v)
 				end
 			end
 
@@ -615,6 +615,13 @@ RunService.RenderStepped:Connect(function()
 				createNotification("Done!", "Sucessfully modified your UV Lamp!", 5)
 			end
 		end
+	end
+
+	if toggles["Power Level"] == true then
+		PowerLevel.Visible = true
+		PowerLevel.Text = "Power Level: "..ReplicatedStorage.PowerValues.PowerLevel.Value
+	else 
+		PowerLevel.Visible = false
 	end
 end)
 
