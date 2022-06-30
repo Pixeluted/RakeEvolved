@@ -360,6 +360,16 @@ callbacks["View Supply Drop Items"] = function()
 	end
 end
 
+--// Disable Borders
+
+callbacks["Disable Map Borders"] = function()
+	for _, border in pairs(workspace.Filter.InvisibleWalls:GetChildren()) do 
+		border:Destroy()
+	end
+
+	createNotification("Done!", "All borders around the map were disabled. (Server borders are not possible to remove)", 5)
+end
+
 --// Modifiying
 
 
