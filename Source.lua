@@ -349,6 +349,9 @@ end
 
 
 function modifyStunStick(theTool)
+	Player.Character.Humanoid:EquipTool(theTool)
+	task.wait(0.5)
+
 	for _,v in pairs(getconnections(theTool.Activated)) do 
 		v:Disable()
 	end
@@ -359,17 +362,23 @@ function modifyStunStick(theTool)
 
 		theTool.Event:FireServer("S")
 
-		if workspace.Rake then 
-			if workspace.Rake.Torso then 
-				theTool.Event:FireServer("H", workspace.Rake.Torso)
+		if workspace:FindFirstChild("Rake") then 
+			if workspace.Rake:FindFirstChild("Torso") then 
+				for i = 0, 20, 1 do 
+					theTool.Event:FireServer("H", workspace.Rake.Torso)
+				end
 			end
 		end
 	end)
 
 	StunStickModified = true 
+	--createNotification("Done!", "Sucessfully modified your Stun Stick!", 5)
 end
 
 function modifyUV_Lamp(theTool)
+	Player.Character.Humanoid:EquipTool(theTool)
+	task.wait(0.5)
+
 	for _,v in pairs(getconnections(theTool.Activated)) do 
 		v:Disable()
 	end
@@ -379,16 +388,21 @@ function modifyUV_Lamp(theTool)
 	end)
 
 	UVModified = true
+	--createNotification("Done!", "Sucessfully modified your UV Lamp!", 5)
 end
 
 function handleBackpackAdd(object)
 	if object.Name == "StunStick" then 
 		if toggles["Stun Stick Modifier"] == true then
-			modifyStunStick(object)	
+			if StunStickModified == false then
+				modifyStunStick(object)	
+			end
 		end
 	elseif object.Name == "UV_Lamp" then
 		if toggles["UV Lamp Modifier"] == true then
-			modifyUV_Lamp(object)
+			if UVModified == false then
+				modifyUV_Lamp(object)
+			end
 		end
 	end
 end
@@ -600,7 +614,6 @@ RunService.RenderStepped:Connect(function()
 			if theTool then
 				modifyStunStick(theTool)
 
-				createNotification("Done!", "Sucessfully modified your Stun Stick!", 5)
 			end
 		end
 	end
@@ -612,7 +625,6 @@ RunService.RenderStepped:Connect(function()
 			if theTool then
 				modifyUV_Lamp(theTool)
 
-				createNotification("Done!", "Sucessfully modified your UV Lamp!", 5)
 			end
 		end
 	end
