@@ -14,7 +14,8 @@ local Labels = {
 	["FlareGunLabel"] = nil,
 	["SupplyDropLabels"] = {},
 	["PlayersLabels"] = {},
-	["WaypointLabels"] = {}
+	["WaypointLabels"] = {},
+	["RakeInfoLabel"] = nil
 }
 
 local independentStamina = false
@@ -391,10 +392,64 @@ callbacks["Disable Map Borders"] = function()
 	createNotification("Done!", "All borders around the map were disabled. (Server borders are not possible to remove)", 5)
 end
 
+--// Rake Info
+
+function addToRakeInfo(rake)
+	local BillboardGui = Instance.new("BillboardGui")
+	local HPStatus = Instance.new("TextLabel")
+	local UITextSizeConstraint = Instance.new("UITextSizeConstraint")
+	local Stunned = Instance.new("TextLabel")
+	local UITextSizeConstraint_2 = Instance.new("UITextSizeConstraint")
+
+	BillboardGui.Parent = rake.Head
+	BillboardGui.Active = true
+	BillboardGui.AlwaysOnTop = true
+	BillboardGui.LightInfluence = 1.000
+	BillboardGui.Size = UDim2.new(5, 0, 3, 0)
+	BillboardGui.StudsOffsetWorldSpace = Vector3.new(0, 2, 0)
+
+	HPStatus.Name = "HPStatus"
+	HPStatus.Parent = BillboardGui
+	HPStatus.AnchorPoint = Vector2.new(0.5, 0.5)
+	HPStatus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	HPStatus.BackgroundTransparency = 1.000
+	HPStatus.Position = UDim2.new(0.5, 0, 0.200000003, 0)
+	HPStatus.Size = UDim2.new(0.75757575, 0, 0.316455692, 0)
+	HPStatus.Font = Enum.Font.SourceSans
+	HPStatus.Text = "HP: 500"
+	HPStatus.TextColor3 = Color3.fromRGB(255, 255, 255)
+	HPStatus.TextScaled = true
+	HPStatus.TextSize = 14.000
+	HPStatus.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+	HPStatus.TextWrapped = true
+
+	UITextSizeConstraint.Parent = HPStatus
+
+	Stunned.Name = "Stunned"
+	Stunned.Parent = BillboardGui
+	Stunned.AnchorPoint = Vector2.new(0.5, 0.5)
+	Stunned.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Stunned.BackgroundTransparency = 1.000
+	Stunned.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Stunned.Size = UDim2.new(0.75757575, 0, 0.316455692, 0)
+	Stunned.Font = Enum.Font.SourceSans
+	Stunned.Text = "Stunned: No"
+	Stunned.TextColor3 = Color3.fromRGB(255, 255, 255)
+	Stunned.TextScaled = true
+	Stunned.TextSize = 14.000
+	Stunned.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+	Stunned.TextWrapped = true
+
+	UITextSizeConstraint_2.Parent = Stunned
+
+	Labels.RakeInfoLabel = BillboardGui
+end
+
 --// Modifiying
 
 
 function modifyStunStick(theTool)
+	task.wait(3)
 	Player.Character.Humanoid:EquipTool(theTool)
 	task.wait(0.5)
 
@@ -422,6 +477,7 @@ function modifyStunStick(theTool)
 end
 
 function modifyUV_Lamp(theTool)
+	task.wait(3)
 	Player.Character.Humanoid:EquipTool(theTool)
 	task.wait(0.5)
 
@@ -492,6 +548,34 @@ RunService.RenderStepped:Connect(function()
 		CurrentLightingProperties.Brightness.Value = 0.45
 	end
 
+	if toggles["Show Rake Info"] == true then
+		local RakeInWorkspace = workspace:FindFirstChild("Rake")
+
+		if RakeInWorkspace then
+			if RakeInWorkspace:FindFirstChild("Head") then
+				if not RakeInWorkspace.Head:FindFirstChild("BillboardGui") then
+					addToRakeInfo(RakeInWorkspace)
+				end
+			end
+
+			if RakeInWorkspace:FindFirstChild("Monster") and RakeInWorkspace:FindFirstChild("Head") then
+				if RakeInWorkspace.Head:FindFirstChild("BillboardGui") then
+					Labels.RakeInfoLabel.HPStatus.Text = "HP: "..RakeInWorkspace.Monster.Health
+					if RakeInWorkspace.Monster.WalkSpeed <= 0 then
+						Labels.RakeInfoLabel.Stunned.Text = "Stunned: Yes"
+					else 
+						Labels.RakeInfoLabel.Stunned.Text = "Stunned: No"
+					end
+				end
+			end
+		end
+	else 
+		if Labels.RakeInfoLabel ~= nil then
+			Labels.RakeInfoLabel:Destroy()
+			Labels.RakeInfoLabel = nil
+		end
+	end
+
 	-- ESPs
 
 	if toggles["Scrap ESP"] == true then
@@ -512,6 +596,7 @@ RunService.RenderStepped:Connect(function()
 				if RakeInWorkspace:FindFirstChild("AttackHitbox") then
 					RakeInWorkspace.AttackHitbox.Size = Vector3.new(2048,2048,2048)
 				end
+
 			end
 		end
 	else 
