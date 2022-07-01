@@ -871,4 +871,14 @@ end
 
 Player.Character.Humanoid.Died:Connect(handleDeath)
 
+for _,v in pairs(getconnections(game:GetService("Workspace").Map.SafeHouse.Door.Door.DoorGUIPart.ProximityPrompt.Triggered)) do 
+    v:Disable()
+end
+
+game:GetService("Workspace").Map.SafeHouse.Door.Door.DoorGUIPart.ProximityPrompt.Triggered:Connect(function(plr)
+    if plr == game.Players.LocalPlayer then 
+        workspace.Map.SafeHouse.Door.RemoteEvent:FireServer("Door")
+    end
+end)
+
 createNotification("Script Loaded!", "Thanks for using Rake Evolved!", 5)
