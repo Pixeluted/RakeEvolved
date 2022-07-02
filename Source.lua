@@ -27,6 +27,8 @@ local bypassOnceEnabled = false
 local StunStickModified = false
 local UVModified = false
 
+local StunStickDebaunce = false
+
 local TopBar, TabContent, Tabs, Template, Notifications, PowerLevel, Main = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/hi/main/Ilikedogs.lua'))()
 
 local DragMousePosition
@@ -611,14 +613,16 @@ RunService.RenderStepped:Connect(function()
 		local SupplyCrates = workspace.Debris.SupplyCrates
 
 		if SupplyCrates:FindFirstChild("Box") then
-			local Box = SupplyCrates:FindFirstChild("Box")
+			for _,Box in pairs(SupplyCrates:GetChildren()) do 
+				if Box.Name == "Box" then			
+					if not Box.HitBox:FindFirstChild("Isguied") then 
+						newLabel(Box.HitBox, "Supply Crate")
+						createNotification("Supply crate spawned!", "You can now view items in the supply crate", 5)
 
-			if not Box.HitBox:FindFirstChild("Isguied") then 
-				newLabel(Box.HitBox, "Supply Crate")
-				createNotification("Supply crate spawned!", "You can now view items in the supply crate", 5)
-
-				if toggles["Bypass Supply Drop Lock"] == true then
-					bypassSupplyDropLock(Box)
+						if toggles["Bypass Supply Drop Lock"] == true then
+							bypassSupplyDropLock(Box)
+						end
+					end
 				end
 			end
 		end 
@@ -766,6 +770,29 @@ RunService.RenderStepped:Connect(function()
 		end
 	end
 
+	if toggles["Stun Stick Aura"] == true then
+		local Rake = workspace:FindFirstChild("Rake")    
+   
+		if Rake then
+			if Rake:FindFirstChild("HumanoidRootPart") then
+				local theTool = Player.Character:FindFirstChild("StunStick")    
+				
+				if theTool then
+					if (Player.Character.HumanoidRootPart.Position - Rake.HumanoidRootPart.Position).Magnitude <= 13 then
+						if StunStickDebaunce == false then
+							theTool.Event:FireServer("S")
+							theTool.Event:FireServer("H", workspace.Rake.Torso)
+							StunStickDebaunce = true 
+							task.wait(0.5)
+							StunStickDebaunce = false
+						end
+					end
+					
+				end
+			end
+		end
+	end
+
 	--// idk
 
 	if toggles["Waypoints"] == true then
@@ -859,9 +886,9 @@ end)
 --// Died Event
 
 function handleDeath()
-	setclipboard(toggles)
 	Player.CharacterAdded:Wait()
 	Player.Character:WaitForChild("HumanoidRootPart")
+	task.wait(6)
 	hookedStamina = false
 	UVModified = false 
 	StunStickModified = false
