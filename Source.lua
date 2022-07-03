@@ -18,18 +18,39 @@ local Labels = {
 	["RakeInfoLabel"] = nil
 }
 
-local independentStamina = false
+local ModifiedValues = {
+	["damageRunOnce"] = false,
+	["hookedStamina"] = false,
+	["bypassOnceEnabled"] = false,
+	["StunStickModified"] = false,
+	["UVModified"] = false,
+	["independentStamina"] = false,
+	["modifiedFlashlight"] = false
+}
 
-local damageRunOnce = false
-local hookedStamina = false
-local bypassOnceEnabled = false
+local Debaunces = {
+	["scrapFarm"] = false
+}
 
-local StunStickModified = false
-local UVModified = false
+local isSrapFarmRunning = false 
+local detectionCounter = 0
+
+local detectionHook; detectionHook = hookmetamethod(game.StarterGui, '__namecall', function(self, ...)
+    local Method = getnamecallmethod()
+    
+    if Method == 'SetCore' then
+		if isSrapFarmRunning then
+        	detectionCounter = detectionCounter + 1
+        	return wait(math.huge)
+		end
+    end 
+    
+    return detectionHook(self, ...)
+end)
 
 local StunStickDebaunce = false
 
-local TopBar, TabContent, Tabs, Template, Notifications, PowerLevel, Main = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/hi/main/Ilikedogs.lua'))()
+local TopBar, TabContent, Tabs, Template, Notifications, PowerLevel, Main = loadstring(readfile("RakeEvolvedDev/MainUI.lua"))()
 
 local DragMousePosition
 local FramePosition
@@ -297,7 +318,7 @@ local currentIndex = 1
 --// Supply Drop Functions
 
 function viewSupplyDropItems(Box)
-	local MainViewer = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/hi/main/viewer.lua'))()
+	local MainViewer = loadstring(readfile("RakeEvolvedDev/SupplyDropGUI.lua"))()
 
 	local ItemsFolder = Box.Items_Folder
 
@@ -326,7 +347,7 @@ function bypassSupplyDropLock(Box)
 	local connection
 	connection = Box.GUIPart.ProximityPrompt.Triggered:Connect(function(plr)
 		if plr == Player and not Box.DB_Folder:FindFirstChild(Player.Name) then
-			local MainViewer = loadstring(game:HttpGet('https://raw.githubusercontent.com/Pixeluted/hi/main/viewer.lua'))()
+			local MainViewer = loadstring(readfile("RakeEvolvedDev/SupplyDropGUI.lua"))()
 
 			local ItemsFolder = Box.Items_Folder
 
@@ -392,6 +413,74 @@ callbacks["Disable Map Borders"] = function()
 	end
 
 	createNotification("Done!", "All borders around the map were disabled. (Server borders are not possible to remove)", 5)
+end
+
+--// TP
+
+callbacks["Collect Flare Gun"] = function()
+	local theFlareGun = workspace:FindFirstChild("FlareGunPickUp")
+
+	if theFlareGun then
+		local theModel = theFlareGun.FlareGun 
+
+		Player.Character.HumanoidRootPart.CFrame = theModel.CFrame
+
+		createNotification("Collected!", "If you don't have the flare gun just click on it again!", 5)
+	else 
+		createNotification("No Flare Gun Spawned!", "Hmmm, sherlock there is not flare gun", 5)
+	end
+end
+
+callbacks["Collect Scraps (Don't use too often)"] = function()
+	if Debaunces["scrapFarm"] == false and isSrapFarmRunning == false then
+		Debaunces["scrapFarm"] = true 
+		isSrapFarmRunning = true 
+
+		if #getScraps() == 0 then
+			createNotification("No Scraps Found!", "There are currently no spawned scraps!", 5)
+			Debaunces["scrapFarm"] = false
+			isSrapFarmRunning = false 
+			return
+		end
+
+		for _,scrap in pairs(getScraps()) do 
+			if Player.Character:FindFirstChild("Humanoid") and Player.Character:FindFirstChild("Humanoid").SeatPart then
+			   Player.Character:FindFirstChild("Humanoid").Sit = false
+			end
+			
+			if detectionCounter >= 3 then 
+				createNotification("Farming Stopped!", "We have stopped to prevent your death! You will have 1 minute cooldown!", 5)
+				break
+			end
+			
+			task.wait(0.1)
+			Player.Character.HumanoidRootPart.CFrame = scrap.CFrame
+			if not (scrap == nil) then
+				if detectionCounter >= 3 then 
+					createNotification("Farming Stopped!", "We have stopped to prevent your death! You will have 1 minute cooldown!", 5)
+					break
+				end
+				
+				task.wait(0.5)
+				Player.Character.HumanoidRootPart.CFrame = scrap.CFrame
+			end
+			task.wait(1)
+		end
+
+		if detectionCounter >= 3 then
+			task.spawn(function()
+				task.wait(60)
+				Debaunces["scrapFarm"] = false
+				detectionCounter = 0
+			end)
+		else 
+			Debaunces["scrapFarm"] = false
+		end
+
+		isSrapFarmRunning = false 
+	else 
+		createNotification("Debaunce!", "You are on cooldown!", 5)
+	end
 end
 
 --// Rake Info
@@ -474,7 +563,7 @@ function modifyStunStick(theTool)
 		end
 	end)
 
-	StunStickModified = true 
+	ModifiedValues["StunStickModified"] = true 
 	--createNotification("Done!", "Sucessfully modified your Stun Stick!", 5)
 end
 
@@ -491,20 +580,27 @@ function modifyUV_Lamp(theTool)
 		theTool.Event:FireServer()
 	end)
 
-	UVModified = true
+	ModifiedValues["UVModified"] = true
 	--createNotification("Done!", "Sucessfully modified your UV Lamp!", 5)
+end
+
+function modifyFlashlight(theTool)
+	theTool.Handle.Flashlight.Light.Light1.Brightness = 10 
+	theTool.Handle.Flashlight.Light.Light1.Angle = 100
+
+	ModifiedValues["modifiedFlashlight"] = true
 end
 
 function handleBackpackAdd(object)
 	if object.Name == "StunStick" then 
 		if toggles["Stun Stick Modifier"] == true then
-			if StunStickModified == false then
+			if ModifiedValues["StunStickModified"] == false then
 				modifyStunStick(object)	
 			end
 		end
 	elseif object.Name == "UV_Lamp" then
 		if toggles["UV Lamp Modifier"] == true then
-			if UVModified == false then
+			if ModifiedValues["UVModified"] == false then
 				modifyUV_Lamp(object)
 			end
 		end
@@ -670,29 +766,39 @@ RunService.RenderStepped:Connect(function()
 		end
 	end
 
+	if toggles["Flare Gun Notification"] == true then
+		local FlareGunInWorkspace = workspace:FindFirstChild("FlareGunPickUp")
+
+		if FlareGunInWorkspace then
+			if not FlareGunInWorkspace:FindFirstChild("Isguied") then
+				createNotification("Flare Gun Spawned!", "Flare Gun has spawned! You can now TP to it!", 5)
+			end
+		end
+	end
+
 	--// Client
 
 	if toggles["Infinite Stamina"] == true then
-		if hookedStamina == false then
+		if ModifiedValues["hookedStamina"] == false then
 			for _,v in ipairs(getloadedmodules()) do 
 				if v.Name == "M_H" then 
-					LPH_JIT_ULTRA(function(v)
+					--LPH_JIT_ULTRA(function(v)
 						local module = require(v)
 						local old 
 						old = hookfunction(module.TakeStamina, function(smth, amount)
 							if amount > 0 then return old(smth, -0.5) end
 							return old(smth, amount)
 						end)
-					end)(v)
+					--end)(v)
 				end
 			end
 
-			hookedStamina = true
+			ModifiedValues["hookedStamina"] = true
 			createNotification("Notice", "You cannot disable Infinite Stamina unless you turn it off and die", 5)
 		end
 	end
 
-	if damageRunOnce == false then
+	if ModifiedValues["damageRunOnce"] == false then
 		local NoFallDamage
 		NoFallDamage = hookmetamethod(game, '__namecall', function(...)
 			local Method = getnamecallmethod()
@@ -707,7 +813,7 @@ RunService.RenderStepped:Connect(function()
 			return NoFallDamage(...)
 		end)
 
-		damageRunOnce = true
+		ModifiedValues["damageRunOnce"] = true
 	end
 
 	if toggles["View Cameras"] == true then
@@ -736,7 +842,7 @@ RunService.RenderStepped:Connect(function()
 	--// Supply Drop
 
 	if toggles["Bypass Supply Drop Lock"] == true then
-		if bypassOnceEnabled == false then
+		if ModifiedValues["bypassOnceEnabled"] == false then
 
 			for _,Box in pairs(game.Workspace.Debris.SupplyCrates:GetChildren()) do 
 				if Box.Name == "Box" then
@@ -744,14 +850,14 @@ RunService.RenderStepped:Connect(function()
 				end
 			end
 
-			bypassOnceEnabled = true
+			ModifiedValues["bypassOnceEnabled"] = true
 		end
 	end
 
 	--// Tools
 
 	if toggles["Stun Stick Modifier"] == true then
-		if StunStickModified == false then
+		if ModifiedValues["StunStickModified"] == false then
 			local theTool = Player.Backpack:FindFirstChild("StunStick") or Player.Character:FindFirstChild("StunStick")
 
 			if theTool then
@@ -761,7 +867,7 @@ RunService.RenderStepped:Connect(function()
 	end
 
 	if toggles["UV Lamp Modifier"] == true then
-		if UVModified == false then
+		if ModifiedValues["UVModified"] == false then
 			local theTool = Player.Backpack:FindFirstChild("UV_Lamp") or Player.Character:FindFirstChild("UV_Lamp")
 
 			if theTool then
@@ -778,7 +884,7 @@ RunService.RenderStepped:Connect(function()
 				local theTool = Player.Character:FindFirstChild("StunStick")    
 				
 				if theTool then
-					if (Player.Character.HumanoidRootPart.Position - Rake.HumanoidRootPart.Position).Magnitude <= 13 then
+					if (Player.Character.HumanoidRootPart.Position - Rake.HumanoidRootPart.Position).Magnitude <= 11 then
 						if StunStickDebaunce == false then
 							theTool.Event:FireServer("S")
 							theTool.Event:FireServer("H", workspace.Rake.Torso)
@@ -796,9 +902,7 @@ RunService.RenderStepped:Connect(function()
 	--// idk
 
 	if toggles["Waypoints"] == true then
-		print("yes toggle")
 		if #Labels.WaypointLabels == 0 then
-			print("no labels already created")
 			for mapPoint, point in pairs(MapPoints) do 
 				local part = Instance.new("Part")
 				part.Transparency = 1
@@ -808,16 +912,26 @@ RunService.RenderStepped:Connect(function()
 				part.Parent = workspace
 
 				newLabel(part, mapPoint, false, true)
-				print("created part for "..mapPoint)
 			end
 		end
 	else 
 		for _,bill in pairs(Labels.WaypointLabels) do 
 			bill.Parent:Destroy()
-			print("destroying")
 		end
 
 		Labels.WaypointLabels = {}
+	end
+
+	if toggles["Flashlight Modifier"] == true then
+		if ModifiedValues["modifiedFlashlight"] == false then
+			local theTool = Player.Backpack:FindFirstChild("Flashlight") or Player.Character:FindFirstChild("Flashlight")
+
+			if theTool == nil then 
+				theTool = Player.Backpack:FindFirstChild("UpgradedFlashlight") or Player.Character:FindFirstChild("UpgradedFlashlight")
+			end
+
+			modifyFlashlight(theTool)
+		end
 	end
 end)
 
@@ -889,9 +1003,10 @@ function handleDeath()
 	Player.CharacterAdded:Wait()
 	Player.Character:WaitForChild("HumanoidRootPart")
 	task.wait(6)
-	hookedStamina = false
-	UVModified = false 
-	StunStickModified = false
+	ModifiedValues["hookedStamina"] = false
+	ModifiedValues["UVModified"] = false 
+	ModifiedValues["StunStickModified"] = false
+	ModifiedValues["modifiedFlashlight"] = false
 	
 	Player.Character.Humanoid.Died:Connect(handleDeath)
 end
