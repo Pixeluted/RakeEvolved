@@ -50,7 +50,7 @@ end)
 
 local StunStickDebaunce = false
 
-local TopBar, TabContent, Tabs, Template, Notifications, PowerLevel, Main = loadstring(readfile("RakeEvolvedDev/MainUI.lua"))()
+local TopBar, TabContent, Tabs, Template, Notifications, PowerLevel, Main = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pixeluted/hi/main/Ilikedogs.lua"))()
 
 local DragMousePosition
 local FramePosition
@@ -318,7 +318,7 @@ local currentIndex = 1
 --// Supply Drop Functions
 
 function viewSupplyDropItems(Box)
-	local MainViewer = loadstring(readfile("RakeEvolvedDev/SupplyDropGUI.lua"))()
+	local MainViewer = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pixeluted/hi/main/viewer.lua"))()
 
 	local ItemsFolder = Box.Items_Folder
 
@@ -347,7 +347,7 @@ function bypassSupplyDropLock(Box)
 	local connection
 	connection = Box.GUIPart.ProximityPrompt.Triggered:Connect(function(plr)
 		if plr == Player and not Box.DB_Folder:FindFirstChild(Player.Name) then
-			local MainViewer = loadstring(readfile("RakeEvolvedDev/SupplyDropGUI.lua"))()
+			local MainViewer = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pixeluted/hi/main/viewer.lua"))()
 
 			local ItemsFolder = Box.Items_Folder
 
@@ -782,14 +782,14 @@ RunService.RenderStepped:Connect(function()
 		if ModifiedValues["hookedStamina"] == false then
 			for _,v in ipairs(getloadedmodules()) do 
 				if v.Name == "M_H" then 
-					--LPH_JIT_ULTRA(function(v)
+					LPH_JIT_ULTRA(function(v)
 						local module = require(v)
 						local old 
 						old = hookfunction(module.TakeStamina, function(smth, amount)
 							if amount > 0 then return old(smth, -0.5) end
 							return old(smth, amount)
 						end)
-					--end)(v)
+					end)(v)
 				end
 			end
 
