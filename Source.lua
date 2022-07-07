@@ -134,6 +134,7 @@ else
 	local defaultData = {}
 	defaultData = game.HttpService:JSONEncode(defaultData)
 	writefile("RakeEvolved/settings.json", defaultData)
+	loadData = defaultData
 end
 
 local callbacks = {}
