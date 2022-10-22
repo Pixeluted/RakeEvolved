@@ -25,7 +25,7 @@ local ScrapFolder = FilterFolder:WaitForChild("ScrapSpawns")
 local TrapsFolder = game:GetService("Workspace"):WaitForChild("Debris"):WaitForChild("Traps")
 local CurrentLightingProperties = ReplicatedStorage:WaitForChild("CurrentLightingProperties")
 
-local UI = loadstring(game:HttpGet("http://89.203.249.229:3000/scripts/MainUI.lua"))()
+local UI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Pixeluted/RakeEvolved/Stable/MainUI.lua"))()
 local Library = UI:Init()
 
 local Labels = {
