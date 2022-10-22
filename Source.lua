@@ -1,3 +1,9 @@
+--[[
+	MADE BY Pixeluted#5815
+	DO NOT RESELL
+	OR CLAIM TO BE YOURS
+--]]
+
 if not writefile or not readfile or not isfile or not isfolder or not hookfunction or not hookmetamethod then 
 	game.Players.LocalPlayer:Kick("Unsupported Exploit! - Missing Functions writefile, readfile, isfile, isfolder, hookfunction, hookmetamethod")
 end
