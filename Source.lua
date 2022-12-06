@@ -805,7 +805,7 @@ function collectScraps()
 
 		isSrapFarmRunning = false 
 	elseif isSrapFarmRunning == true then 
-		Library:CreateNotification("The Farm is Running", "You are now collections scraps", 5)
+		Library:CreateNotification("The Farm is Running", "You are now collecting scraps", 5)
 	elseif isScrapFarmOnDebaunce == true then 
 		Library:CreateNotification("Debaunce!", "You are on cooldown!", 5)
 	end
@@ -823,7 +823,7 @@ function collectFlareGun()
 
 		Library:CreateNotification("Collected!", "If you don't have the flare gun just click on it again!", 5)
 	else 
-		Library:CreateNotification("No Flare Gun Spawned!", "Hmmm, sherlock there is not flare gun", 5)
+		Library:CreateNotification("No Flare Gun Spawned!", "There is no flare gun spawned", 5)
 	end
 end
 
