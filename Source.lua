@@ -20,6 +20,12 @@ end
 
 local Player = game.Players.LocalPlayer 
 
+if Player.Character == nil then
+   Player.CharacterAdded:Wait()
+   Player.Character:WaitForChild("Humanoid")
+   Player.Character:WaitForChild("HumanoidRootPart")
+end
+
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
