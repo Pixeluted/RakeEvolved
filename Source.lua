@@ -200,10 +200,10 @@ local function ESP(object, Text, markObject, misc)
 
 	if isThisLiveEntity == nil then isThisLiveEntity = false else isThisLiveEntity = true end
 
-    if object.Size == nil then 
-		warn("Invalid object was tried to ESP! Ignored.")
-	    return
-    end
+    	if object.Size == nil then 
+           warn("Invalid object was tried to ESP! Ignored.")
+	   return
+        end
 
 	local colorToUse = nil
 	local isThisPlayer = false
