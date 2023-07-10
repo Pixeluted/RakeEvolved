@@ -588,7 +588,7 @@ end
 -- [[ INFINITE STAMINA ]] --
 
 function hookInfiniteStamina()
-	LPH_NO_VIRTUALIZE(function() 
+	LPH_JIT_MAX(function() 
 		for _,v in pairs(getloadedmodules()) do 
 			if v.Name == "M_H" then
 				local module = require(v)
