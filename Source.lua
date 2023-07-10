@@ -4,6 +4,11 @@
 	OR CLAIM TO BE YOURS
 --]]
 
+if not LPH_OBFUSCATED then
+    LPH_JIT_MAX = function(...) return(...) end;
+    LPH_NO_VIRTUALIZE = function(...) return(...) end;
+end
+
 if not writefile or not readfile or not isfile or not isfolder or not hookfunction or not hookmetamethod then 
 	game.Players.LocalPlayer:Kick("Unsupported Exploit! - Missing Functions writefile, readfile, isfile, isfolder, hookfunction, hookmetamethod")
 end
@@ -583,15 +588,18 @@ end
 -- [[ INFINITE STAMINA ]] --
 
 function hookInfiniteStamina()
-	for _,v in pairs(getloadedmodules()) do 
-		if v.Name == "M_H" then
-			local module = require(v)
-			local old; old = hookfunction(module.TakeStamina, function(smth, amount)
-				if amount > 0 then return old(smth, -0.5) end 
-				return old(smth, amount)
-			end)
-		end
-	end
+	LPH_NO_VIRTUALIZE(function() 
+		for _,v in pairs(getloadedmodules()) do 
+			if v.Name == "M_H" then
+				local module = require(v)
+				local old; old = hookfunction(module.TakeStamina, function(smth, amount)
+					if amount > 0 then return old(smth, -0.5) end 
+					return old(smth, amount)
+				end)
+			end
+		end	
+	end)()
+	
 
 	Library:CreateNotification("Notice", "To disable infinite stamina, you need to disable this and then reset your character!", 5)
 end
