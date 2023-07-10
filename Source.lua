@@ -411,6 +411,7 @@ function setupRakeDetection()
 	workspace.ChildAdded:Connect(function(object)
 		if object.Name == "Rake" then 
 			object:WaitForChild("HumanoidRootPart")
+			Labels.RakeInfoLabel = nil
 			addRakeLabel(object)
 		end
 	end)
@@ -904,7 +905,7 @@ function updateRakeInfo()
 		local RakeInWorkspace = workspace:FindFirstChild("Rake")
 
 		if RakeInWorkspace and RakeInWorkspace:FindFirstChild("Monster") then 
-			Labels.RakeInfoLabel.HPStatus.Text = "HP: "..RakeInWorkspace.Monster.Health
+			Labels.RakeInfoLabel.HPStatus.Text = "HP: "..math.floor(RakeInWorkspace.Monster.Health)
 			if RakeInWorkspace.Monster.WalkSpeed <= 0 then
 				Labels.RakeInfoLabel.Stunned.Text = "Stunned: Yes"
 			else 
